@@ -12,8 +12,8 @@ function Header() {
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
               <Link class="nav-item nav-link active" to="/dashboard">Home</Link>
-              <Link class="nav-item nav-link" to="/features">Features</Link>
-              <Link class="nav-item nav-link" to="/pricing">Pricing</Link>
+              <Link class="nav-item nav-link" to="/booking">Booking</Link>
+              <Link class="nav-item nav-link" to="/users">Users</Link>
             </div>
         </div>
     </nav>

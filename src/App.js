@@ -9,8 +9,8 @@ import {
 
 import Header from './layout/Header';
 import Dashboard from './components/Dashboard';
-import Features from './components/Features';
-import Pricing from './components/Pricing';
+import Booking from './components/Booking';
+import Users from './components/Users';
 
 function App() {
   return (
@@ -23,8 +23,8 @@ function App() {
         <Switch> 
           <Route exact path='/' component={Dashboard}></Route> 
           <Route exact path='/dashboard' component={Dashboard}></Route> 
-          <Route exact path='/features' component={Features}></Route> 
-          <Route exact path='/pricing' component={Pricing}></Route> 
+          <Route exact path='/booking' component={Booking}></Route> 
+          <Route exact path='/users' component={Users}></Route> 
         </Switch> 
         </div>
       </div>
