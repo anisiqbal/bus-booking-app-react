@@ -5,26 +5,26 @@ function Dashboard() {
     <div className="dashboard">
         <div className="row">
           <div className="col-md-4">
-            <div class="card">
-              <div class="card-body">
-                <h5 class="card-title">Special title treatment</h5>
-                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+            <div className="card">
+              <div className="card-body">
+                <h5 className="card-title">120</h5>
+                <p className="card-text">Bookings</p>
               </div>
             </div>
           </div>
           <div className="col-md-4">
-            <div class="card">
-              <div class="card-body">
-                <h5 class="card-title">Special title treatment</h5>
-                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+            <div className="card">
+              <div className="card-body">
+                <h5 className="card-title">17</h5>
+                <p className="card-text">Vehicles</p>
               </div>
             </div>
           </div>
           <div className="col-md-4">
-            <div class="card">
-              <div class="card-body">
-                <h5 class="card-title">Special title treatment</h5>
-                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+            <div className="card">
+              <div className="card-body">
+                <h5 className="card-title">359</h5>
+                <p className="card-text">Users</p>
               </div>
             </div>
           </div>
