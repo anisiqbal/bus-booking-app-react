@@ -2,7 +2,27 @@ import React from 'react';
 import Modal from '../shared/Modal';
 
 function Routes() {
+
+  const addModal = {
+    action: "add",
+    name: "Add"
+  }
+
+  const updateModal = {
+    action: "update",
+    name: "Update"
+  }
+
   return (
+
+    <div> 
+      <h2 className = "text-left pb-2">
+        All Routes
+
+      <a href="#" className="btn btn-primary float-right" data-toggle="modal" data-target="#exampleModal">Add Routes</a>
+
+      </h2>
+
     <table className="table">
     <thead>
       <tr>
@@ -46,6 +66,11 @@ function Routes() {
       </tr>
     </tbody>
   </table>
+  
+  <Modal data={addModal} />
+    <Modal data={updateModal} />
+
+</div>
     );
 }
 
