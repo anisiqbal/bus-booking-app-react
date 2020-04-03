@@ -2,7 +2,27 @@ import React from 'react';
 import Modal from '../shared/Modal';
 
 function Schedule() {
+
+  const addModal = {
+    action: "add",
+    name: "Add"
+  }
+
+  const updateModal = {
+    action: "update",
+    name: "Update"
+  }
+
   return (
+
+    <div>
+
+      <h2 className = "text-left pb-2"> 
+      All Schedules
+
+      <a href="#" className="btn btn-primary float-right" data-toggle="modal" data-target="#exampleModal">Add Schedules</a>
+      </h2>
+
     <table className="table">
     <thead>
       <tr>
@@ -48,6 +68,11 @@ function Schedule() {
       </tr>
     </tbody>
   </table>
+
+  <Modal data={addModal} />
+    <Modal data={updateModal} />
+
+</div>
     );
 }
 
