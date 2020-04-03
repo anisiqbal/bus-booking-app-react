@@ -2,7 +2,26 @@ import React from 'react';
 import Modal from '../shared/Modal';
 
 function Vehicles() {
+
+  const addModal = {
+    action: "add",
+    name: "Add"
+  }
+
+  const updateModal = {
+    action: "update",
+    name: "Update"
+  }
+
+
   return (
+
+    <div>
+      <h2 className = "text-left pb-2" >
+          All Vehicles
+
+          <a href="#" className="btn btn-primary float-right" data-toggle="modal" data-target="#exampleModal">Add Vehicles</a>
+        </h2>  
    
     
     <table className="table">
@@ -50,6 +69,11 @@ function Vehicles() {
       </tr>
     </tbody>
   </table>
+
+  <Modal data={addModal} />
+    <Modal data={updateModal} />
+
+</div>
     );
 }
 
