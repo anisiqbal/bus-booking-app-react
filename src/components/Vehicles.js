@@ -12,7 +12,24 @@ function Vehicles() {
     action: "update",
     name: "Update"
   }
-
+      //Vehicles data
+  const    vehicleData =[
+        {
+          num:'1',
+          vehicleno:'KXM-459',
+          drivername:'Shakir Khan',
+        },
+        {
+          num:'2',
+          vehicleno:'KXM-999',
+          drivername:'Muhammad Ali',
+        },
+        {
+          num:'3',
+          vehicleno:'KXM-789',
+          drivername:'Dilawar khan',
+        },
+      ]
 
   return (
 
@@ -36,37 +53,31 @@ function Vehicles() {
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <th scope="row">1</th>
-        
-        <td>KXM-459</td>
-        <td>Shakir Khan</td>
-        
-        
-        <td>
-          <div className="btn-group" role="group" aria-label="Basic example">
-            <button type="button" className="btn btn-info" data-toggle="modal" data-target="#exampleModal">Edit</button>
-            <button type="button" className="btn btn-warning">Delete</button>
-          </div>
-        </td>
-      </tr>
-      <tr>
-        <th scope="row">2</th>
-        <td>KEW-532</td>
-        <td>Shayan Khan</td>
-        
-        <td>
-          <div className="btn-group" role="group" aria-label="Basic example">
-            <button type="button" className="btn btn-info">Edit</button>
-            <button type="button" className="btn btn-warning">Delete</button>
+      {
+        vehicleData.map(
+          (vehicle, i) => {
+            return(
 
+            <tr>
+            <th scope="row">{vehicle.num}</th>
             
+            <td>{vehicle.vehicleno}</td>
+            <td>{vehicle.drivername}</td>
+            
+            
+            <td>
+              <div className="btn-group" role="group" aria-label="Basic example">
+                <button type="button" className="btn btn-info" data-toggle="modal" data-target="#exampleModal">Edit</button>
+                <button type="button" className="btn btn-warning">Delete</button>
+              </div>
+            </td>
+          </tr>
+            )
+          }
+        )
+      }
 
-          <Modal/>
-
-          </div>
-        </td>
-      </tr>
+      <Modal/>
     </tbody>
   </table>
 
