@@ -1,5 +1,6 @@
 import React from 'react';
 import Modal from '../shared/Modal';
+import Booking from './Booking';
 
 function Routes() {
 
@@ -12,6 +13,25 @@ function Routes() {
     action: "update",
     name: "Update"
   }
+
+  // Routes data
+ const routeData = [
+    {
+      num: '2',
+      routeto: 'Karachi',
+      routefrom: 'Islamabad',
+    },
+    {
+      num: '3',
+      routeto: 'Karachi',
+      routefrom: 'Lahore',
+    },
+    {
+      num: '4',
+      routeto: 'Karachi',
+      routefrom: 'Peshawar',
+    },
+  ]
 
   return (
 
@@ -35,43 +55,39 @@ function Routes() {
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <th scope="row">1</th>
-        
-        <td>Karachi</td>
-        <td>Islamabad</td>
-        
-        
-        <td>
-          <div className="btn-group" role="group" aria-label="Basic example">
-            <button type="button" className="btn btn-info" data-toggle="modal" data-target="#exampleModal">Edit</button>
-            <button type="button" className="btn btn-warning">Delete</button>
-          </div>
-        </td>
-      </tr>
-      <tr>
-        <th scope="row">2</th>
-        <td>Karachi</td>
-        <td>Islamabad</td>
-        
-        <td>
-          <div className="btn-group" role="group" aria-label="Basic example">
-            <button type="button" className="btn btn-info">Edit</button>
-            <button type="button" className="btn btn-warning">Delete</button>
+        {
+          routeData.map(
+            (route, i) => {
+              return(
 
-            <Modal/>
+                <tr>
+                <th scope="row">{route.num}</th>
+                
+                <td>{route.routeto}</td>
+                <td>{route.routefrom}</td>
+                
+                
+                <td>
+                  <div className="btn-group" role="group" aria-label="Basic example">
+                    <button type="button" className="btn btn-info" data-toggle="modal" data-target="#exampleModal">Edit</button>
+                    <button type="button" className="btn btn-warning">Delete</button>
+                  </div>
+                </td>
+              </tr>
 
-          </div>
-        </td>
-      </tr>
+              )
+            }
+          )
+        }
+     
     </tbody>
   </table>
   
   <Modal data={addModal} />
     <Modal data={updateModal} />
 
-</div>
+ </div>
     );
-}
+ }
 
 export default Routes;
