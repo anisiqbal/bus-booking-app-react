@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import Modal from '../shared/Modal';
+
 import axios from 'axios';
 
 class Booking extends Component {

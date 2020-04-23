@@ -1,44 +1,44 @@
-import React from 'react';
+import React ,{Component} from 'react';
 import Modal from '../shared/Modal';
 import DataTable from '../shared/DataTable';
+import axios from 'axios';
 
-function Users() {
+class Users extends Component {
+  constructor(props) {
+    super(props);
 
-  const addModal = {
+    this.state = {
+      usersData: []
+    };
+}
+
+   addModal = {
     action: "add",
     name: "Add"
   }
 
-  const updateModal = {
+   updateModal = {
     action: "update",
     name: "Update"
   }
 
-  const columns = [
-    "Id",
-    "Name",
-    "Phone No."
-  ]
+  componentDidMount() {
+    const url = "https://5e9d75af0fd0b50016f7552b.mockapi.io/users";
 
-  const usersData = [
-    {
-      id: '1',
-      name: 'Muhammad Awais',
-      phone: '+923312737076'
-    },
-    {
-      id: '2',
-      name: 'Muhammad Idrees',
-      phone: '+923312737076'
-    },
-    {
-      id: '3',
-      name: 'Muhammad Ilyas',
-      phone: '+923312737076'
-    },
+    axios.get(url).then(responce => {
+        console.log(responce);
+
+        // getting array from responce 
+        let  users = responce.data;
+        
+        // setting the planets state with api responce 
+        this.setState({
+         usersData: users
+        });
+    })
+}
   
-  ]
-
+render() {
   return (
     <div>
       <h2 className="text-left pb-2">
@@ -47,14 +47,50 @@ function Users() {
         <a href="#" className="btn btn-primary float-right" data-toggle="modal" data-target="#exampleModal">Add User</a>
       </h2>
 
-      <DataTable columns={columns} data={usersData}/>
+      <table className="table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">phone</th>
+                    <th scope="col">Actions</th>
+                  
+                </tr>
+            </thead>
+            <tbody>
 
-    <Modal data={addModal} />
-    <Modal data={updateModal} />
+              {
+                this.state.usersData.map(
+                  (users, i) => {
+                    return(
+                      <tr>
+                        <th scope="row"> {users.id} </th>
+                        <td>{users.name}</td>
+                        <td>{users.phone}</td>
+                        
+                        <td>
+                          <div className="btn-group" role="group" aria-label="Basic example">
+                            <button type="button" className="btn btn-info" data-toggle="modal" data-target="#exampleModal">Edit</button>
+                            <button type="button" className="btn btn-warning">Delete</button>
+                          </div>
+                        </td>
+                      </tr>
+                    )
+
+                  }
+                )
+              }
+
+            </tbody>
+        </table>
+
+
+        <Modal data={this.addModal} />
+        <Modal data={this.updateModal} />
 
     </div>
 
   );
 }
-
+}
 export default Users;
