@@ -1,36 +1,45 @@
-import React from 'react';
+import React, {Component} from 'react';
 import Modal from '../shared/Modal';
+import axios from 'axios';
 
-function Vehicles() {
+class Vehicles extends Component { 
+  constructor(props) {
+    super(props);
 
-  const addModal = {
+    this.state = {
+      vehiclesData: []
+    };
+}
+
+   addModal = {
     action: "add",
     name: "Add"
   }
 
-  const updateModal = {
+  updateModal = {
     action: "update",
     name: "Update"
   }
-      //Vehicles data
-  const    vehicleData =[
-        {
-          num:'1',
-          vehicleno:'KXM-459',
-          drivername:'Shakir Khan',
-        },
-        {
-          num:'2',
-          vehicleno:'KXM-999',
-          drivername:'Muhammad Ali',
-        },
-        {
-          num:'3',
-          vehicleno:'KXM-789',
-          drivername:'Dilawar khan',
-        },
-      ]
 
+
+  componentDidMount() {
+    const url = "https://5e9d75af0fd0b50016f7552b.mockapi.io/vehicles";
+
+    axios.get(url).then(responce => {
+        console.log(responce);
+
+        // getting array from responce 
+        let  vehicles = responce.data;
+        
+        // setting the planets state with api responce 
+        this.setState({
+          vehiclesData: vehicles
+        });
+    })
+}
+
+
+render(){
   return (
 
     <div>
@@ -54,15 +63,15 @@ function Vehicles() {
     </thead>
     <tbody>
       {
-        vehicleData.map(
-          (vehicle, i) => {
+        this.state.vehiclesData.map(
+          (vehicles, i) => {
             return(
 
             <tr>
-            <th scope="row">{vehicle.num}</th>
+            <th scope="row">{vehicles.id}</th>
             
-            <td>{vehicle.vehicleno}</td>
-            <td>{vehicle.drivername}</td>
+            <td>{vehicles.vehicle}</td>
+            <td>{vehicles.driver}</td>
             
             
             <td>
@@ -76,16 +85,15 @@ function Vehicles() {
           }
         )
       }
-
-      <Modal/>
+      
     </tbody>
   </table>
 
-  <Modal data={addModal} />
-    <Modal data={updateModal} />
+        <Modal data={this.addModal} />
+        <Modal data={this.updateModal} />
 
 </div>
     );
 }
-
+}
 export default Vehicles;
